@@ -1,14 +1,11 @@
 -- LSP configuration for Python
 -- Note: TypeScript and JSON extras are imported in lazy.lua
 return {
-  -- Python LSP setup: ruff (linting) + basedpyright (types) + pyrefly (completion)
+  -- Python LSP setup: ruff (linting) + pyrefly (completion)
   {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        -- Disable pyright (using basedpyright instead)
-        pyright = { enabled = false },
-
         -- Ruff: linting only
         ruff = {
           on_attach = function(client, _)
@@ -25,31 +22,6 @@ return {
                 fixViolation = { enable = false },
               },
               lint = { enable = true },
-            },
-          },
-        },
-
-        -- Basedpyright: type checking, hover, code actions
-        basedpyright = {
-          on_attach = function(client, _)
-            client.server_capabilities.completionProvider = false
-            client.server_capabilities.definitionProvider = false
-            client.server_capabilities.documentHighlightProvider = false
-            client.server_capabilities.renameProvider = false
-            client.server_capabilities.semanticTokensProvider = false
-          end,
-          settings = {
-            basedpyright = {
-              disableOrganizeImports = true,
-              analysis = {
-                autoImportCompletions = true,
-                autoSearchPaths = true,
-                diagnosticMode = "openFilesOnly",
-                useLibraryCodeForTypes = true,
-                diagnosticSeverityOverrides = {
-                  reportUnknownMemberType = "none",
-                },
-              },
             },
           },
         },
