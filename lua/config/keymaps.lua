@@ -10,6 +10,10 @@ vim.keymap.set({ "n", "v", "o", "x" }, "k", "j", { noremap = true })
 vim.keymap.set({ "n", "v" }, "gj", "gk", { noremap = true })
 vim.keymap.set({ "n", "v" }, "gk", "gj", { noremap = true })
 
+-- G goes to last line + end of line; <leader>G keeps original G behavior
+vim.keymap.set({ "n", "v", "o" }, "G", "G$", { noremap = true })
+vim.keymap.set({ "n", "v", "o" }, "<leader>G", "G", { noremap = true, desc = "Last line (original G)" })
+
 -- Swap in command-line and insert mode (for popup menus)
 vim.keymap.set("c", "<C-j>", "<C-k>", { noremap = true })
 vim.keymap.set("c", "<C-k>", "<C-j>", { noremap = true })
