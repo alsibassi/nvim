@@ -20,6 +20,16 @@ vim.keymap.set("c", "<C-k>", "<C-j>", { noremap = true })
 vim.keymap.set("i", "<C-j>", "<C-k>", { noremap = true })
 vim.keymap.set("i", "<C-k>", "<C-j>", { noremap = true })
 
+-- :LspRestart shim — nvim-lspconfig removed its :Lsp* commands; reimplement via native vim.lsp API
+vim.api.nvim_create_user_command("LspRestart", function()
+  for _, client in ipairs(vim.lsp.get_clients()) do
+    vim.lsp.stop_client(client.id, true)
+  end
+  vim.defer_fn(function()
+    vim.cmd("edit") -- reloads buffer -> FileType event -> servers reattach
+  end, 300)
+end, { desc = "Restart LSP clients" })
+
 vim.keymap.set('n', '<leader>yd', function()
   local diags = vim.diagnostic.get(0, { lnum = vim.api.nvim_win_get_cursor(0)[1] - 1 })
   if diags[1] then
