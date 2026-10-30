@@ -19,15 +19,12 @@ git clone https://github.com/alsibassi/nvim.git
 
 your nvim will now find ``~.config/nvim`` as its nvim
 
-If you are trying to use the config on a linux box, make sure to execute the linux setup script :
+Run the setup script, it detects your setup :
 
 ```
-cd
-cd .config/nvim
-chmod +x setup.sh
+cd ~/.config/nvim
 ./setup.sh
 ```
-make sure you have curl and permissions for this to work
 
 
 run nvim to get the initial setup
