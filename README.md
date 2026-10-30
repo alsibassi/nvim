@@ -23,10 +23,12 @@ If you are trying to use the config on a linux box, make sure to execute the lin
 
 ```
 cd
-cd .config
+cd .config/nvim
 chmod +x setup.sh
 ./setup.sh
 ```
+make sure you have curl installed for this to work
+
 
 run nvim to get the initial setup
 
