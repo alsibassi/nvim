@@ -27,7 +27,7 @@ cd .config/nvim
 chmod +x setup.sh
 ./setup.sh
 ```
-make sure you have curl installed for this to work
+make sure you have curl and permissions for this to work
 
 
 run nvim to get the initial setup
